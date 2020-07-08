@@ -5,8 +5,10 @@ let canvas = document.getElementById("canvas");
 
 function InitThis() {
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // canvas.width = window.innerWidth;
+    canvas.width = document.body.getBoundingClientRect().width;
+    // canvas.height = window.innerHeight;
+    canvas.height = document.body.getBoundingClientRect().height;
 
     ctx = document.getElementById('canvas').getContext("2d");
 
