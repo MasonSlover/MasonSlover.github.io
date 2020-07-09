@@ -33,15 +33,16 @@ function InitThis() {
     });
 }
 
+canvas.addEventListener("touchmove", function (e) {
+    var touch = e.touches[0];
+    var mouseEvent = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+    });
+    canvas.dispatchEvent(mouseEvent);
+}, false);
+
 function Draw(x, y, isDown) {
-    canvas.addEventListener("touchmove", function (e) {
-        var touch = e.touches[0];
-        var mouseEvent = new MouseEvent("mousemove", {
-            clientX: touch.clientX,
-            clientY: touch.clientY
-        });
-        canvas.dispatchEvent(mouseEvent);
-    }, false);
     // if (isDown) {
         ctx.beginPath();
         ctx.strokeStyle = $('#selColor').val();
