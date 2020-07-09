@@ -1,6 +1,6 @@
-var mousePressed = false;
-var lastX, lastY;
-var ctx;
+let mousePressed = false;
+let lastX, lastY;
+let ctx;
 let canvas = document.getElementById("canvas");
 
 function InitThis() {
@@ -18,21 +18,23 @@ function InitThis() {
     });
 
     $('#canvas').mousemove(function (e) {
-        if (mousePressed) {
+        // if (mousePressed) {
             Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
-        }
+        // }
     });
 
     $('#canvas').mouseup(function (e) {
         mousePressed = false;
+        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
     });
     $('#canvas').mouseleave(function (e) {
         mousePressed = false;
+        // Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
     });
 }
 
 function Draw(x, y, isDown) {
-    if (isDown) {
+    // if (isDown) {
         ctx.beginPath();
         ctx.strokeStyle = $('#selColor').val();
         ctx.lineWidth = $('#selWidth').val();
@@ -41,7 +43,7 @@ function Draw(x, y, isDown) {
         ctx.lineTo(x, y);
         ctx.closePath();
         ctx.stroke();
-    }
+    // }
     lastX = x; lastY = y;
 }
 
@@ -50,3 +52,8 @@ function clearArea() {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
+
+let btn = document.getElementById("top").addEventListener("click", function () {
+    clearArea()
+    console.log("Clicked border!");
+});
