@@ -7,10 +7,10 @@ document.ontouchmove = function(e){ e.preventDefault(); }
 
 
 var shakeEvent = new Shake({threshold: 15});
-
+shakeEvent.start();
 function InitThis() {
 
-    shakeEvent.start();
+
     // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
     // canvas.height = window.innerHeight;
@@ -60,10 +60,8 @@ function stopShake(){
 
 canvas.ontouchmove = function(event){
     event.preventDefault();
-
     let newx = event.touches[0].clientX;
     let newy = event.touches[0].clientY;
-
     ctx.lineTo(newx,newy);
 
 }
