@@ -3,6 +3,9 @@ let lastX, lastY;
 let ctx;
 let canvas = document.getElementById("canvas");
 
+document.ontouchmove = function(e){ e.preventDefault(); }
+
+
 function InitThis() {
 
     // canvas.width = window.innerWidth;
@@ -31,6 +34,17 @@ function InitThis() {
         mousePressed = false;
         // Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
     });
+}
+
+
+canvas.ontouchmove = function(event){
+    event.preventDefault();
+
+    let newx = event.touches[0].clientX;
+    let newy = event.touches[0].clientY;
+
+    ctx.lineTo(newx,newy);
+
 }
 
 canvas.addEventListener("touchmove", function (e) {
