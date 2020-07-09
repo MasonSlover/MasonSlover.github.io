@@ -6,8 +6,21 @@ let canvas = document.getElementById("canvas");
 document.ontouchmove = function(e){ e.preventDefault(); }
 
 
-var shakeEvent = new Shake({threshold: 15});
-shakeEvent.start();
+var myShakeEvent = new Shake({
+    threshold: 15, // optional shake strength threshold
+    timeout: 1000 // optional, determines the frequency of event generation
+});
+myShakeEvent.start();
+
+window.addEventListener('shake', shakeEventDidOccur, false);
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+    clearArea();
+    alert('shake!');
+}
+
+
 function InitThis() {
 
 
@@ -41,13 +54,6 @@ function InitThis() {
 
 //listen to shake event
 
-window.addEventListener('shake', shakeEventDidOccur, false);
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-    alert("shake");
-    clearArea();
-}
 
 //stop listening
 function stopShake(){
