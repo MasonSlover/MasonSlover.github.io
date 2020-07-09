@@ -6,8 +6,11 @@ let canvas = document.getElementById("canvas");
 document.ontouchmove = function(e){ e.preventDefault(); }
 
 
-function InitThis() {
 
+
+function InitThis() {
+    var shakeEvent = new Shake({threshold: 15});
+    shakeEvent.start();
     // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
     // canvas.height = window.innerHeight;
@@ -37,8 +40,7 @@ function InitThis() {
 }
 
 //listen to shake event
-var shakeEvent = new Shake({threshold: 15});
-shakeEvent.start();
+
 window.addEventListener('shake', function(){
     alert("Shaked");
     clearArea();
@@ -50,7 +52,7 @@ function stopShake(){
 }
 
 //check if shake is supported or not.
-if(!("ondevicemotion" in window)){alert("Not Supported");}
+// if(!("ondevicemotion" in window)){alert("Not Supported");}
 
 
 canvas.ontouchmove = function(event){
