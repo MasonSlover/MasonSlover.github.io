@@ -36,6 +36,22 @@ function InitThis() {
     });
 }
 
+//listen to shake event
+var shakeEvent = new Shake({threshold: 15});
+shakeEvent.start();
+window.addEventListener('shake', function(){
+    alert("Shaked");
+    clearArea();
+}, false);
+
+//stop listening
+function stopShake(){
+    shakeEvent.stop();
+}
+
+//check if shake is supported or not.
+if(!("ondevicemotion" in window)){alert("Not Supported");}
+
 
 canvas.ontouchmove = function(event){
     event.preventDefault();
