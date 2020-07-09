@@ -6,10 +6,10 @@ let canvas = document.getElementById("canvas");
 document.ontouchmove = function(e){ e.preventDefault(); }
 
 
-
+var shakeEvent = new Shake({threshold: 15});
 
 function InitThis() {
-    var shakeEvent = new Shake({threshold: 15});
+
     shakeEvent.start();
     // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
@@ -41,10 +41,13 @@ function InitThis() {
 
 //listen to shake event
 
-window.addEventListener('shake', function(){
-    alert("Shaked");
+window.addEventListener('shake', shakeEventDidOccur, false);
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+
     clearArea();
-}, false);
+}
 
 //stop listening
 function stopShake(){
