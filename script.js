@@ -1,3 +1,5 @@
+import './shake';
+
 let mousePressed = false;
 let lastX, lastY;
 let ctx;
@@ -14,11 +16,6 @@ myShakeEvent.start();
 
 window.addEventListener('shake', shakeEventDidOccur, false);
 
-//function to call when shake occurs
-function shakeEventDidOccur () {
-    clearArea();
-    alert('shake!');
-}
 
 
 function InitThis() {
@@ -52,16 +49,7 @@ function InitThis() {
     });
 }
 
-//listen to shake event
 
-
-//stop listening
-function stopShake(){
-    shakeEvent.stop();
-}
-
-//check if shake is supported or not.
-// if(!("ondevicemotion" in window)){alert("Not Supported");}
 
 
 canvas.ontouchmove = function(event){
@@ -105,3 +93,9 @@ let btn = document.getElementById("top").addEventListener("click", function () {
     clearArea()
     console.log("Clicked border!");
 });
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+    clearArea();
+    alert('shake!');
+}
