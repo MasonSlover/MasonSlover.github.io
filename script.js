@@ -1,13 +1,19 @@
+// import 'shake';
+
 let mousePressed = false;
 let lastX, lastY;
 let ctx;
 let canvas = document.getElementById("canvas");
+let myShakeEvent = new Shake({
+    threshold: 15, // optional shake strength threshold
+    timeout: 1000 // optional, determines the frequency of event generation
+});
 
 document.ontouchmove = function(e){ e.preventDefault(); }
 
 
 function InitThis() {
-
+    myShakeEvent.start();
     // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
     // canvas.height = window.innerHeight;
@@ -36,6 +42,14 @@ function InitThis() {
     });
 }
 
+window.addEventListener('shake', shakeEventDidOccur, false);
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+
+    clearArea();
+    alert('shake!');
+}
 
 canvas.ontouchmove = function(event){
     event.preventDefault();
