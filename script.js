@@ -1,4 +1,4 @@
-// import 'shake';
+
 
 let mousePressed = false;
 let lastX, lastY;
@@ -12,8 +12,20 @@ let myShakeEvent = new Shake({
 document.ontouchmove = function(e){ e.preventDefault(); }
 
 
+var myShakeEvent = new Shake({
+    threshold: 15, // optional shake strength threshold
+    timeout: 1000 // optional, determines the frequency of event generation
+});
+myShakeEvent.start();
+
+window.addEventListener('shake', shakeEventDidOccur, false);
+
+
+
 function InitThis() {
+
     myShakeEvent.start();
+
     // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
     // canvas.height = window.innerHeight;
@@ -51,12 +63,12 @@ function shakeEventDidOccur () {
     alert('shake!');
 }
 
+
+
 canvas.ontouchmove = function(event){
     event.preventDefault();
-
     let newx = event.touches[0].clientX;
     let newy = event.touches[0].clientY;
-
     ctx.lineTo(newx,newy);
 
 }
@@ -94,3 +106,9 @@ let btn = document.getElementById("top").addEventListener("click", function () {
     clearArea()
     console.log("Clicked border!");
 });
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+    clearArea();
+    alert('shake!');
+}
