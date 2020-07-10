@@ -4,27 +4,16 @@ let mousePressed = false;
 let lastX, lastY;
 let ctx;
 let canvas = document.getElementById("canvas");
-let myShakeEvent = new Shake({
-    threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
-});
+
 
 document.ontouchmove = function(e){ e.preventDefault(); }
 
-
-var myShakeEvent = new Shake({
-    threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
-});
-myShakeEvent.start();
-
-window.addEventListener('shake', shakeEventDidOccur, false);
 
 
 
 function InitThis() {
 
-    myShakeEvent.start();
+
 
     // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
@@ -54,14 +43,6 @@ function InitThis() {
     });
 }
 
-window.addEventListener('shake', shakeEventDidOccur, false);
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-
-    clearArea();
-    alert('shake!');
-}
 
 
 
@@ -107,8 +88,3 @@ let btn = document.getElementById("top").addEventListener("click", function () {
     console.log("Clicked border!");
 });
 
-//function to call when shake occurs
-function shakeEventDidOccur () {
-    clearArea();
-    alert('shake!');
-}
