@@ -1,4 +1,3 @@
-let mousePressed = false;
 let lastX, lastY;
 let ctx;
 let canvas = document.getElementById("canvas");
@@ -6,37 +5,15 @@ let canvas = document.getElementById("canvas");
 document.ontouchmove = function(e){ e.preventDefault()};
 
 function InitThis() {
-
-    // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
-    // canvas.height = window.innerHeight;
     canvas.height = document.body.getBoundingClientRect().height;
 
     ctx = document.getElementById('canvas').getContext("2d");
 
-    $('#canvas').mousedown(function (e) {
-        mousePressed = true;
-        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
-    });
-
     $('#canvas').mousemove(function (e) {
-        // if (mousePressed) {
-            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
-        // }
-    });
-
-    $('#canvas').mouseup(function (e) {
-        mousePressed = false;
-        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
-    });
-    $('#canvas').mouseleave(function (e) {
-        mousePressed = false;
-        // Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
+        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top);
     });
 }
-
-
-
 
 canvas.ontouchmove = function(event){
     event.preventDefault();
@@ -54,7 +31,7 @@ canvas.addEventListener("touchmove", function (e) {
     canvas.dispatchEvent(mouseEvent);
 }, false);
 
-function Draw(x, y, isDown) {
+function Draw(x, y) {
     // if (isDown) {
         ctx.beginPath();
         ctx.strokeStyle = $('#selColor').val();
