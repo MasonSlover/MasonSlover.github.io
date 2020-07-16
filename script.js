@@ -6,9 +6,7 @@ let ctx;
 let canvas = document.getElementById("canvas");
 
 
-document.ontouchmove = function(e){ e.preventDefault(); }
-
-
+document.ontouchmove = function(e){ e.preventDefault();
 
 
 function InitThis() {
@@ -83,8 +81,7 @@ function clearArea() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
-let btn = document.getElementById("top").addEventListener("click", function () {
+document.getElementById("top").addEventListener("click", function () {
     clearArea()
     console.log("Clicked border!");
 });
-
