@@ -1,17 +1,11 @@
-
-
 let mousePressed = false;
 let lastX, lastY;
 let ctx;
 let canvas = document.getElementById("canvas");
 
-
-document.ontouchmove = function(e){ e.preventDefault();
-
+document.ontouchmove = function(e){ e.preventDefault()};
 
 function InitThis() {
-
-
 
     // canvas.width = window.innerWidth;
     canvas.width = document.body.getBoundingClientRect().width;
@@ -49,7 +43,6 @@ canvas.ontouchmove = function(event){
     let newx = event.touches[0].clientX;
     let newy = event.touches[0].clientY;
     ctx.lineTo(newx,newy);
-
 }
 
 canvas.addEventListener("touchmove", function (e) {
@@ -82,6 +75,6 @@ function clearArea() {
 }
 
 document.getElementById("top").addEventListener("click", function () {
-    clearArea()
+    clearArea();
     console.log("Clicked border!");
 });
